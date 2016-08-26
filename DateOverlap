@@ -1,0 +1,55 @@
+using System;
+namespace ConsoleApplication1
+{
+
+    public class DateRange
+    {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DateRange A = new DateRange();
+            A.StartDate = new DateTime(2015, 1, 18);
+            A.EndDate = new DateTime(2015, 1, 28);
+
+            DateRange B = new DateRange();
+            B.StartDate = new DateTime(2015, 2, 18);
+            B.EndDate = new DateTime(2015, 2, 28);
+
+            Console.WriteLine("Result is :");
+            Console.WriteLine(Isoverlaped(A, B));
+            Console.ReadLine();
+
+        }
+
+        public static bool Isoverlaped(DateRange A, DateRange B)
+        {
+
+            if (A.StartDate > A.EndDate || B.StartDate > B.EndDate)
+                throw new InvalidOperationException();
+
+            if (A.StartDate == A.EndDate || B.StartDate == B.EndDate)
+                return false;
+
+            if (A.StartDate > B.StartDate)
+            {
+
+                if (A.EndDate > B.StartDate && A.EndDate < B.EndDate)
+                    return true;
+                if (A.StartDate > B.EndDate)
+                    return false;
+            }
+            else {
+                if (B.EndDate > A.StartDate && B.EndDate < A.StartDate)
+                    return true;
+                if (B.EndDate > A.EndDate)
+                    return true;
+            }
+            return false;
+        }
+    }
+}
