@@ -1,0 +1,21 @@
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+function ImagePreview(sel) {
+document.getElementById('preview').src = "" + sel.options[sel.selectedIndex].value;
+}
+</script>
+</HEAD>
+
+<BODY>
+<center>
+<form name=previewselect>
+<select name=selbox size=1 onChange="ImagePreview(this)">
+<option value="images/ci_1-small.jpg">Image 1
+<option value="images/ci_2-small.jpg">Image 2
+<option value="images/ci_3-small.jpg">Image 3
+<option value="images/ci_4-small.jpg">Image 4
+<option value="images/ci_5-small.jpg">Image 5
+<option value="images/ci_6-small.jpg">Image 6
+</select>
+</form>
+</center>
